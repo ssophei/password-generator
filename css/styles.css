@@ -193,3 +193,24 @@ input[type="radio"]:checked {
     gap: 5px;
     padding: 4px;
 }
+
+@media (max-width: 768px) {
+    .split_container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "password password"
+          "radio    checkbox";
+      }
+    
+      .length_group {
+        grid-area: password;
+      }
+    
+      .radio_group {
+        grid-area: radio;
+      }
+    
+      .checkbox_group {
+        grid-area: checkbox;
+      }
+}
