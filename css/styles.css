@@ -64,11 +64,26 @@ input[type="checkbox"]:checked:hover {
     outline-offset: 2px;
 }
 
+input[type="checkbox"]:disabled {
+    appearance: none;
+    background-color: #4A58464D;
+    border: transparent;
+}
+
+input[type="checkbox"]:disabled:hover {
+    transform: scale(1)
+}
+
 .checkbox-label {
     display: flex;
     align-items: center;
     gap: 5px;
     padding: 4px;
+}
+
+.checkbox-label:has(input[type="checkbox"]:disabled) {
+    text-decoration: line-through;
+    color: #626b5f;
 }
 
 .slider {
@@ -86,6 +101,12 @@ input[type="checkbox"]:checked:hover {
     background: var(--checkbox-border-color);
     cursor: pointer;
     border-radius: 20px;
+}
+
+.slider:hover::-webkit-slider-thumb,
+.slider:focus::-webkit-slider-thumb {
+    box-shadow: 0 0 8px #4A584680;
+    transform: scale(1.1)
 }
 
 input[type="number"] {
@@ -113,7 +134,7 @@ input[type="number"]:focus {
 input[type="range"]:focus {
     outline: none;
     font-family: "Roboto Mono";
-    box-shadow: 0 0 8px #4A5846CC;
+    /* box-shadow: 0 0 8px #4A5846CC; */
 }
 
 .split_container {

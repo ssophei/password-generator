@@ -7,6 +7,10 @@ const numbers = document.getElementById("numbers")
 const symbols = document.getElementById("symbols")
 const form = document.getElementById("passwordgeneratorform")
 const passwordDisplay = document.getElementById("passwordDisplay")
+const readability = document.getElementById("readability")
+
+const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+const radios = document.querySelectorAll('input[type="radio"]')
 
 characterrange.addEventListener("input", synchCharacterAmount)
 characternumber.addEventListener("input", synchCharacterAmount)
@@ -23,18 +27,24 @@ form.addEventListener('submit', e => {
     passwordDisplay.innerText = "banana"
 })
 
-document.querySelectorAll('input[type="checkbox"].toggle').forEach(checkbox => {
+checkboxes.forEach(checkbox => {
     checkbox.addEventListener('keypress', e => {
         if (e.key === 'Enter' && checkbox.checked == false) {
             checkbox.checked = true;
         } 
         else if(e.key === 'Enter' && checkbox.checked == true) {
-            checkbox.checked =false;
+            checkbox.checked = false;
         }
+
+        setTimeout(() => {
+            checkboxes.forEach(cb => {
+                if (cb !== checkbox) cb.blur();
+            });
+        }, 0);
     });
 })
 
-document.querySelectorAll('input[type="radio"].toggle').forEach(radio => {
+radios.forEach(radio => {
     const group = radio.dataset.group;
     radio.addEventListener('keypress', e => {
         if (e.key === 'Enter' | e.key === ' ') {
@@ -44,13 +54,41 @@ document.querySelectorAll('input[type="radio"].toggle').forEach(radio => {
     });
     radio.addEventListener('click', () => {
         selectRadio(radio, group);
-    })
+    });
+    radio.addEventListener('change', () => {
+        if (radio.checked) {
+            if (radio.value === 'readability') {
+                checkboxes.forEach(cb => {
+                    if (cb.id === 'uppercase' || cb.id === 'lowercase') {
+                        cb.checked = true;
+                    } else {
+                        cb.checked = false;
+                        cb.disabled = true;
+                    }
+                })
+            } else if (radio.value === 'say') {
+                checkboxes.forEach(cb => {
+                    if (cb.id === 'uppercase' || cb.id === 'lowercase') {
+                        cb.checked = true;
+                    } else {
+                        cb.checked = false;
+                        cb.disabled = false;
+                    }
+                })
+            } else if (radio.value === 'allowall') {
+                checkboxes.forEach(cb => {
+                    cb.checked = true;
+                });
+            };
+        };
+    });
 })
 
 function selectRadio(selectedRadio, group){
     document.querySelectorAll(`input[type="radio"][data-group="${group}"]`)
         .forEach(radio => {radio.checked = false});
     selectedRadio.checked = true;
+    selectedRadio.dispatchEvent(new Event('change'), { bubbles: true });
 }
 
 function generatePassword(length, say, readability, uppercase, lowercase, numbers, symbols){
