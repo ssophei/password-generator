@@ -23,6 +23,17 @@ form.addEventListener('submit', e => {
     passwordDisplay.innerText = "banana"
 })
 
+document.querySelectorAll('.toggle').forEach(checkbox => {
+    checkbox.addEventListener('keypress', e => {
+        if (e.key === 'Enter' && checkbox.checked == false) {
+            checkbox.checked = true;
+        } 
+        else if(e.key === 'Enter' && checkbox.checked == true) {
+            checkbox.checked =false;
+        }
+    });
+})
+
 function generatePassword(length, say, readability, uppercase, lowercase, numbers, symbols){
     function getRandomNumber(min, max){
         return Math.floor(Math.random() * (max - min)) + min

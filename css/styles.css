@@ -100,7 +100,7 @@ input[type="range"]:focus {
 input[type="checkbox"]:focus {
     outline: none;
     font-family: "Roboto Mono";
-    box-shadow: 0 0 8px #4A5846CC;
+    box-shadow: 0 0 8px #4A584666;
 }
 
 .split_container {
