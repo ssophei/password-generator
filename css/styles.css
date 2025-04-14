@@ -117,6 +117,7 @@ input[type="number"] {
     width: 50px;
     border-radius: 5px;
     font-family: "Roboto Mono";
+    color: var(--checkbox-border-color);
 }
 
 input::-webkit-inner-spin-button,
@@ -138,7 +139,24 @@ input[type="range"]:focus {
 }
 
 .split_container {
-    column-count: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.length_group,
+.radio_group,
+.checkbox_group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.length_picker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 input[type="radio"] {

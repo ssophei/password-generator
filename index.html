@@ -37,28 +37,32 @@
         <img class="recolor" src="images/repost.png" alt="copy paste" width="45">
     </button>
         <form id="passwordgeneratorform" class="form">
-            <label for="">password length</label> 
-            <input type="range" class="slider" id="characterrange" min="1" max="50" value="15" tabindex="1">
-            <input type="number" class="number" id="characternumber" min="1" max="50" value="15" tabindex="2">
-
             <div class="split_container">
-                <p>
-                    <label class="radio-label" for="readability">
-                        <input type="radio" name="readability" value="readability" data-group="custom-radio" class="toggle" id="readability" tabindex="3">
-                        <span>easy to read</span>
-                    </label>
+                <div class="length_group">
+                    <label for="">password length</label> 
+                    <div class="length_picker">
+                        <input type="range" class="slider" id="characterrange" min="1" max="50" value="15" tabindex="1">
+                        <input type="number" class="number" id="characternumber" min="1" max="50" value="15" tabindex="2">
+                    </div>
+                </div>
+
+                <div class="radio_group">
                     <label class="radio-label" for="say">
-                        <input type="radio" name="say" value="say" data-group="custom-radio" class="toggle" id="say" tabindex="4">
+                        <input type="radio" name="say" value="say" data-group="custom-radio" class="toggle" id="say" tabindex="3">
                         <span>easy to say</span>
+                    </label>
+                    <label class="radio-label" for="readability">
+                        <input type="radio" name="readability" value="readability" data-group="custom-radio" class="toggle" id="readability" tabindex="4">
+                        <span>easy to read</span>
                     </label>
                     <label class="radio-label" for="allowall">
                         <input type="radio" name="allowall" value="allowall" data-group="custom-radio" class="toggle" id="allowall" tabindex="5">
                         <span>all characters</span>
                     </label>
-                </p>
+                </div>
 
 
-                <p>
+                <div class="checkbox_group">
                     <label class="checkbox-label" for="uppercase">
                         <input type="checkbox" class="checkbox" id="uppercase" tabindex="6">
                         <span>uppercase</span>
@@ -74,7 +78,7 @@
                     <label class="checkbox-label" for="symbols">
                         <input type="checkbox" class="checkbox" id="symbols" tabindex="9">
                         <span>symbols</span>
-                </p>
+                </div>
             </div>
             </label>
         </form>

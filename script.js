@@ -57,7 +57,7 @@ radios.forEach(radio => {
     });
     radio.addEventListener('change', () => {
         if (radio.checked) {
-            if (radio.value === 'readability') {
+            if (radio.value === 'say') {
                 checkboxes.forEach(cb => {
                     if (cb.id === 'uppercase' || cb.id === 'lowercase') {
                         cb.checked = true;
@@ -66,7 +66,7 @@ radios.forEach(radio => {
                         cb.disabled = true;
                     }
                 })
-            } else if (radio.value === 'say') {
+            } else if (radio.value === 'readability') {
                 checkboxes.forEach(cb => {
                     if (cb.id === 'uppercase' || cb.id === 'lowercase') {
                         cb.checked = true;
