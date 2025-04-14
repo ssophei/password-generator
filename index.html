@@ -4,14 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
-    <meta name="description" content="sophie's password generator"
-</head>
+    <meta name="description" content="sophie's password generator">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        img.recolor {
+          filter: url(#recolorFFFCE2);
+        }
+      </style>
+    </head>
 <body>
-    <h1>hi this is my password generator</h1>
-    <h3>hi this is my password generator but smaller</h3>
-    <label for="pwd"Enter your password:></label>
-    <input type="password" id="pwd" name="pwd">
-    <label for="color"Select color:></label>
-    <input type="color" id="color">
+    <svg width="0" height="0" style="position: absolute;">
+        <filter id="recolorFFFCE2" color-interpolation-filters="sRGB">
+          <feColorMatrix type="matrix" values="
+            0 0 0 0 1
+            0 0 0 0 0.988
+            0 0 0 0 0.886
+            0 0 0 1 0" />
+        </filter>
+    </svg>
+    <div class="header">
+        <h1>password generator</h1>
+        <!-- <div class="password-display" id="passwordDisplay">generated password</h3> -->
+    </div>
+    <button type="copy">
+        <img class="recolor" src="images/copy-document.png" alt="copy paste" width="45">
+    </button>
+    <button type="submit">
+        <img class="recolor" src="images/repost.png" alt="copy paste" width="45">
+    </button>
+        <form id="passwordgeneratorform" class="form">
+            <label for="">password length</label> 
+            <input type="range" class="slider" id="characterrange" min="1" max="50" value="15" tabindex="1">
+            <input type="number" class="number" id="characternumber" min="1" max="50" value="15" tabindex="2">
+
+            <div class="split_container">
+                <p>
+                    <label class="checkbox-label" for="readability">
+                        <input type="checkbox" id="readability" tabindex="3">
+                        <span>easy to read</span>
+                    </label>
+                    <label class="checkbox-label" for="say">
+                        <input type="checkbox" id="say" tabindex="4">
+                        <span>easy to say</span>
+                    </label>
+                    <label class="checkbox-label" for="allowall">
+                        <input type="checkbox" id="allowall" tabindex="5">
+                        <span>all characters</span>
+                    </label>
+                </p>
+
+
+                <p>
+                    <label class="checkbox-label" for="uppercase">
+                        <input type="checkbox" id="uppercase" tabindex="6">
+                        <span>uppercase</span>
+                    </label>
+                    <label class="checkbox-label" for="lowercase">
+                        <input type="checkbox" id="lowercase" tabindex="7">
+                        <span>lowercase</span>
+                    </label>
+                    <label class="checkbox-label" for="numbers">
+                        <input type="checkbox" id="numbers" tabindex="8">
+                        <span>numbers</span>
+                    </label>
+                    <label class="checkbox-label" for="symbols">
+                        <input type="checkbox" id="symbols" tabindex="9">
+                        <span>symbols</span>
+                </p>
+            </div>
+            </label>
+        </form>
 </body>
 </html>
