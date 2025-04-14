@@ -23,7 +23,7 @@ form.addEventListener('submit', e => {
     passwordDisplay.innerText = "banana"
 })
 
-document.querySelectorAll('.toggle').forEach(checkbox => {
+document.querySelectorAll('input[type="checkbox"].toggle').forEach(checkbox => {
     checkbox.addEventListener('keypress', e => {
         if (e.key === 'Enter' && checkbox.checked == false) {
             checkbox.checked = true;
@@ -33,6 +33,25 @@ document.querySelectorAll('.toggle').forEach(checkbox => {
         }
     });
 })
+
+document.querySelectorAll('input[type="radio"].toggle').forEach(radio => {
+    const group = radio.dataset.group;
+    radio.addEventListener('keypress', e => {
+        if (e.key === 'Enter' | e.key === ' ') {
+            e.preventDefault();
+            selectRadio(radio, group);
+        }
+    });
+    radio.addEventListener('click', () => {
+        selectRadio(radio, group);
+    })
+})
+
+function selectRadio(selectedRadio, group){
+    document.querySelectorAll(`input[type="radio"][data-group="${group}"]`)
+        .forEach(radio => {radio.checked = false});
+    selectedRadio.checked = true;
+}
 
 function generatePassword(length, say, readability, uppercase, lowercase, numbers, symbols){
     function getRandomNumber(min, max){
