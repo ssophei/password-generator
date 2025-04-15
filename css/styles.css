@@ -16,6 +16,8 @@ body {
     background-color: #9AAB89;
     font-family: "Roboto Mono", "Courier New", Courier, monospace;
     color: var(--checkbox-border-color);
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 button {
@@ -23,6 +25,7 @@ button {
     cursor: pointer;
     appearance: none;
     background-color: inherit;   
+    padding-bottom: 13px;
 }
 
 input[type="checkbox"] {
@@ -84,6 +87,7 @@ input[type="checkbox"]:disabled:hover {
 .checkbox-label:has(input[type="checkbox"]:disabled) {
     text-decoration: line-through;
     color: #626b5f;
+    -webkit-user-drag: none;
 }
 
 .slider {
@@ -213,4 +217,15 @@ input[type="radio"]:checked {
       .checkbox_group {
         grid-area: checkbox;
       }
+}
+
+::selection {
+    background: var(--transparent-green);
+    color: var(--cream-color);
+}
+
+.password-display {
+    user-select: all;
+    -webkit-user-select: all;
+    -webkit-user-drag: false;
 }

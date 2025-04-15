@@ -5,7 +5,8 @@ const uppercase = document.getElementById("uppercase")
 const lowercase = document.getElementById("lowercase")
 const numbers = document.getElementById("numbers")
 const symbols = document.getElementById("symbols")
-const form = document.getElementById("passwordgeneratorform")
+const form = document.getElementById("buttons")
+const generate = document.getElementById("generate")
 const passwordDisplay = document.getElementById("passwordDisplay")
 const readability = document.getElementById("readability")
 
@@ -15,16 +16,16 @@ const radios = document.querySelectorAll('input[type="radio"]')
 characterrange.addEventListener("input", synchCharacterAmount)
 characternumber.addEventListener("input", synchCharacterAmount)
 
-form.addEventListener('submit', e => {
+generate.addEventListener('click', e => {
     e.preventDefault()
     const length = characternumber.value
-    const say = say.checked
-    const uppercase = uppercase.checked
-    const lowercase = lowercase.checked
-    const symbols = symbols.checked
-    const numbers = numbers.checked
-    const password = generatePassword(length, say, uppercase, lowercase, numbers, symbols)
-    passwordDisplay.innerText = "banana"
+    const isSay = say.checked
+    const isUppercase = uppercase.checked
+    const isLowercase = lowercase.checked
+    const isSymbols = symbols.checked
+    const isNumbers = numbers.checked
+    // const password = generatePassword(length, say, uppercase, lowercase, numbers, symbols)
+    passwordDisplay.innerHTML = "banana";
 })
 
 checkboxes.forEach(checkbox => {

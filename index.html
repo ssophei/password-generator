@@ -13,6 +13,8 @@
     <style>
         img.recolor {
           filter: url(#recolorFFFCE2);
+          user-select: none;
+          -webkit-user-drag: none;
         }
       </style>
     </head>
@@ -28,14 +30,20 @@
     </svg>
     <div class="header">
         <h1>password generator</h1>
-        <!-- <div class="password-display" id="passwordDisplay">generated password</h3> -->
+        <div class="password-display">
+            <h3 id="passwordDisplay">
+                generated password
+            </h3>
+        </div>
     </div>
-    <button type="copy">
-        <img class="recolor" src="images/copy-document.png" alt="copy paste" width="45">
-    </button>
-    <button type="submit">
-        <img class="recolor" src="images/repost.png" alt="copy paste" width="45">
-    </button>
+    <form id="buttons">
+        <button type="copy">
+            <img class="recolor" src="images/copy-document.png" alt="copy paste" width="45">
+        </button>
+        <button id="generate" type="button">
+            <img class="recolor" src="images/repost.png" alt="copy paste" width="45">
+        </button>
+    </form>
         <form id="passwordgeneratorform" class="form">
             <div class="split_container">
                 <div class="length_group">
@@ -47,15 +55,15 @@
                 </div>
 
                 <div class="radio_group">
-                    <label class="radio-label" for="say">
+                    <label class="radio-label" for="say" draggable="false">
                         <input type="radio" name="say" value="say" data-group="custom-radio" class="toggle" id="say" tabindex="3">
                         <span>easy to say</span>
                     </label>
-                    <label class="radio-label" for="readability">
+                    <label class="radio-label" for="readability" draggable="false">
                         <input type="radio" name="readability" value="readability" data-group="custom-radio" class="toggle" id="readability" tabindex="4">
                         <span>easy to read</span>
                     </label>
-                    <label class="radio-label" for="allowall">
+                    <label class="radio-label" for="allowall" draggable="false">
                         <input type="radio" name="allowall" value="allowall" data-group="custom-radio" class="toggle" id="allowall" tabindex="5">
                         <span>all characters</span>
                     </label>
@@ -63,19 +71,19 @@
 
 
                 <div class="checkbox_group">
-                    <label class="checkbox-label" for="uppercase">
+                    <label class="checkbox-label" for="uppercase" draggable="false">
                         <input type="checkbox" class="checkbox" id="uppercase" tabindex="6">
                         <span>uppercase</span>
                     </label>
-                    <label class="checkbox-label" for="lowercase">
+                    <label class="checkbox-label" for="lowercase" draggable="false">
                         <input type="checkbox" class="checkbox" id="lowercase" tabindex="7">
                         <span>lowercase</span>
                     </label>
-                    <label class="checkbox-label" for="numbers">
+                    <label class="checkbox-label" for="numbers" draggable="false">
                         <input type="checkbox" class="checkbox" id="numbers" tabindex="8">
                         <span>numbers</span>
                     </label>
-                    <label class="checkbox-label" for="symbols">
+                    <label class="checkbox-label" for="symbols" draggable="false">
                         <input type="checkbox" class="checkbox" id="symbols" tabindex="9">
                         <span>symbols</span>
                 </div>
