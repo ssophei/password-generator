@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>password generator</title>
     <meta name="description" content="sophie's password generator">
-    <script src="script.js" defer></script>
+    <script src="js/script.js" defer></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@0;1&display=swap" rel="stylesheet">
+    <script src="js/secure-random-password.min.js"></script>
+
     <style>
         img.recolor {
           filter: url(#recolorFFFCE2);
@@ -41,7 +43,7 @@
             <img class="recolor" src="images/copy-document.png" alt="copy paste" width="45">
         </button>
         <button id="generate" type="button">
-            <img class="recolor" src="images/repost.png" alt="copy paste" width="45">
+            <img class="recolor" src="images/repost.png" alt="generate password" width="45">
         </button>
     </form>
         <form id="passwordgeneratorform" class="form">
@@ -57,34 +59,38 @@
                 <div class="radio_group">
                     <label class="radio-label" for="say" draggable="false">
                         <input type="radio" name="say" value="say" data-group="custom-radio" class="toggle" id="say" tabindex="3">
-                        <span>easy to say</span>
+                        <span>letters only</span>
                     </label>
                     <label class="radio-label" for="readability" draggable="false">
                         <input type="radio" name="readability" value="readability" data-group="custom-radio" class="toggle" id="readability" tabindex="4">
-                        <span>easy to read</span>
+                        <span>avoid ambiguous characters</span>
                     </label>
                     <label class="radio-label" for="allowall" draggable="false">
-                        <input type="radio" name="allowall" value="allowall" data-group="custom-radio" class="toggle" id="allowall" tabindex="5">
+                        <input type="radio" name="allowall" value="allowall" data-group="custom-radio" class="toggle" id="allowall" tabindex="5" checked>
                         <span>all characters</span>
                     </label>
+                    <!-- <label class="radio-label" for="banana" draggable="false">
+                        <input type="radio" name="banana" value="allowall" data-group="custom-radio" class="toggle" id="banana" tabindex="5">
+                        <span>banana</span>
+                    </label> -->
                 </div>
 
 
                 <div class="checkbox_group">
                     <label class="checkbox-label" for="uppercase" draggable="false">
-                        <input type="checkbox" class="checkbox" id="uppercase" tabindex="6">
+                        <input type="checkbox" class="checkbox" id="uppercase" tabindex="6" checked>
                         <span>uppercase</span>
                     </label>
                     <label class="checkbox-label" for="lowercase" draggable="false">
-                        <input type="checkbox" class="checkbox" id="lowercase" tabindex="7">
+                        <input type="checkbox" class="checkbox" id="lowercase" tabindex="7" checked>
                         <span>lowercase</span>
                     </label>
                     <label class="checkbox-label" for="numbers" draggable="false">
-                        <input type="checkbox" class="checkbox" id="numbers" tabindex="8">
+                        <input type="checkbox" class="checkbox" id="numbers" tabindex="8" checked>
                         <span>numbers</span>
                     </label>
                     <label class="checkbox-label" for="symbols" draggable="false">
-                        <input type="checkbox" class="checkbox" id="symbols" tabindex="9">
+                        <input type="checkbox" class="checkbox" id="symbols" tabindex="9" checked>
                         <span>symbols</span>
                 </div>
             </div>

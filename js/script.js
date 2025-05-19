@@ -24,8 +24,8 @@ generate.addEventListener('click', e => {
     const isLowercase = lowercase.checked
     const isSymbols = symbols.checked
     const isNumbers = numbers.checked
-    // const password = generatePassword(length, say, uppercase, lowercase, numbers, symbols)
-    passwordDisplay.innerHTML = "banana";
+    const password = generatePassword(length, isSay, isUppercase, isLowercase, isNumbers, isSymbols)
+    passwordDisplay.innerHTML = password
 })
 
 checkboxes.forEach(checkbox => {
@@ -79,6 +79,7 @@ radios.forEach(radio => {
             } else if (radio.value === 'allowall') {
                 checkboxes.forEach(cb => {
                     cb.checked = true;
+                    cb.disabled = false;
                 });
             };
         };
@@ -92,12 +93,45 @@ function selectRadio(selectedRadio, group){
     selectedRadio.dispatchEvent(new Event('change'), { bubbles: true });
 }
 
-function generatePassword(length, say, readability, uppercase, lowercase, numbers, symbols){
-    function getRandomNumber(min, max){
-        return Math.floor(Math.random() * (max - min)) + min
+function generatePassword(passwordLength, readability, uppercase, lowercase, numbers, symbols){
+    const characterArray = [];
+    const options = [
+        {enabled: uppercase, value: secureRandomPassword.upper},
+        {enabled: lowercase, value: secureRandomPassword.lower},
+        {enabled: numbers, value: secureRandomPassword.digits},
+        {enabled: symbols, value: secureRandomPassword.symbols},
+    ];
+
+    for (const {enabled, value} of options) {
+        if (enabled) {
+            characterArray.push(value);
+        }
     }
-    const pass = getRandomNumber.toString()
-    return pass
+    
+    function randomInt(min, max) {
+        const minCeiled = Math.ceil(min);
+        const maxFloored = Math.floor(max);
+        return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+    }
+
+    if (passwordLength < characterArray.length) {
+        const removeCount = characterArray.length - passwordLength
+        for (let i = 0; i < removeCount; i ++) {
+            const index = randomInt(0, characterArray.length)
+            characterArray.splice(index, 1)
+        }
+    }
+
+    if (readability) {
+        return secureRandomPassword.randomPassword({
+            length: Number(passwordLength), 
+            characters: characterArray, 
+            predicate: x => !/[Ll1|0Oo]/.test(x)});
+    } else {
+        return secureRandomPassword.randomPassword({
+            length: Number(passwordLength), 
+            characters: characterArray});
+    }
 }
 
 function synchCharacterAmount(e) {
