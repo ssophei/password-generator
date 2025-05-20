@@ -309,7 +309,7 @@ footer {
     padding: 2px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
     form {
         position: absolute;
         top: 40%;
@@ -336,10 +336,12 @@ footer {
         display: flex;
         justify-content: flex-start;
         margin-top: -15px;
+        width: 100%
     }
 
     .copy_regenerate {
-        bottom: -50px;
+        display: flex;
+        bottom: -60px;
         position: fixed;
         width: 100%;
       }
@@ -355,4 +357,5 @@ footer {
     .key_hint_text {
         visibility: hidden;
     }
+
 }
