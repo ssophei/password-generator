@@ -1,1 +1,2 @@
-<h3>access the project at https://ssophei.github.io! (best supported by chrome)</h3>
+<h1>password-generator</h1>
+<h3>this project uses the secure-random-password library to generate a password using cryptographically strong random values</h3>
