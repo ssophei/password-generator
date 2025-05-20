@@ -13,6 +13,10 @@ const readability = document.getElementById("readability")
 const checkboxes = document.querySelectorAll('input[type="checkbox"]')
 const radios = document.querySelectorAll('input[type="radio"]')
 
+window.onload = () => {
+    generateDisplay();
+}
+
 characterRange.addEventListener('input', e => {
     synchCharacterAmount(e);
     generateDisplay();
@@ -35,9 +39,30 @@ function generateDisplay() {
     passwordDisplay.innerHTML = password
 }
 
+function copier() {
+    const copyText = document.getElementById("passwordDisplay").textContent;
+    navigator.clipboard.writeText(copyText);
+}
+
+copy.addEventListener('click', e => {
+    e.preventDefault();
+    copier();
+})
+
 generate.addEventListener('click', e => {
     e.preventDefault();
     generateDisplay();
+})
+
+window.addEventListener('keydown', e => {
+    if (e.key.toLowerCase() === 'r' && !e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+        generateDisplay();
+    }
+    if (e.key.toLowerCase() === 'c' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        copier();
+    }
 })
 
 characterNumber.addEventListener('keypress', e => {
@@ -52,8 +77,7 @@ checkboxes.forEach(checkbox => {
         if (e.key === 'Enter' && checkbox.checked == false) {
             checkbox.checked = true;
             generateDisplay();
-        } 
-        else if(e.key === 'Enter' && checkbox.checked == true) {
+        } else if(e.key === 'Enter' && checkbox.checked == true) {
             checkbox.checked = false;
             generateDisplay();
         }
@@ -139,7 +163,6 @@ function generatePassword(passwordLength, readability, say, uppercase, lowercase
         for (const {enabled, value} of ambiguousOptions) {
             if (enabled) {
                 characterArray.push(value);
-                console.log(value)
             }
         }
     } else {
