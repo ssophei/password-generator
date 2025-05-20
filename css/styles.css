@@ -308,3 +308,33 @@ footer {
 .spacer {
     padding: 2px;
 }
+
+@media (max-width: 600px) {
+    form {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        padding: 1rem;
+        width: 90vw;
+        box-sizing: border-box;
+    }
+  
+    .password-display {
+        width: 285px;
+        height: 80px;
+        word-break: break-word;
+    }
+
+    .header_settings {
+        display: flex;
+        justify-content: space-between;
+        width: 400px;
+    }
+}
