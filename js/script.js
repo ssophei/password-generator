@@ -75,10 +75,14 @@ characterNumber.addEventListener('keypress', e => {
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener('keypress', e => {
         if (e.key === 'Enter' && checkbox.checked == false) {
-            checkbox.checked = true;
             generateDisplay();
         } else if(e.key === 'Enter' && checkbox.checked == true) {
             checkbox.checked = false;
+            const checkedBoxes = [...checkboxes].filter(cb => cb.checked);
+            if (checkedBoxes.length === 0 && checkbox.checked == false) {
+                e.preventDefault();
+                checkbox.checked = true;
+            }
             generateDisplay();
         }
 
@@ -88,7 +92,17 @@ checkboxes.forEach(checkbox => {
             });
         }, 0);
     });
-    checkbox.addEventListener('input', generateDisplay);
+    checkbox.addEventListener('change', e => {
+        const checkedBoxes = [...checkboxes].filter(cb => cb.checked);
+        if (checkedBoxes.length === 0 && checkbox.checked == false) {
+            e.preventDefault();
+            checkbox.checked = true;
+        }
+        generateDisplay();
+    });
+    checkbox.addEventListener('input', e => {
+        generateDisplay();
+    });
 })
 
 radios.forEach(radio => {
