@@ -142,20 +142,18 @@ input[type="range"]:focus {
     /* box-shadow: 0 0 8px #4A5846CC; */
 }
 
-.split_container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-}
-
-.length_group,
-.radio_group,
-.checkbox_group {
+.length_group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
 }
+
+.setting_checks {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
 
 .length_picker {
     display: flex;
@@ -197,27 +195,6 @@ input[type="radio"]:checked {
     gap: 5px;
     padding: 4px;
 }
-
-/* @media (max-width: 768px) {
-    .split_container {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-          "password password"
-          "radio    checkbox";
-      }
-    
-      .length_group {
-        grid-area: password;
-      }
-    
-      .radio_group {
-        grid-area: radio;
-      }
-    
-      .checkbox_group {
-        grid-area: checkbox;
-      }
-} */
 
 ::selection {
     background: var(--transparent-green);

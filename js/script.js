@@ -75,9 +75,10 @@ characterNumber.addEventListener('keypress', e => {
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener('keypress', e => {
         if (e.key === 'Enter' && checkbox.checked == false) {
+            checkbox.checked = !checkbox.checked;
             generateDisplay();
         } else if(e.key === 'Enter' && checkbox.checked == true) {
-            checkbox.checked = false;
+            checkbox.checked = !checkbox.checked;
             const checkedBoxes = [...checkboxes].filter(cb => cb.checked);
             if (checkedBoxes.length === 0 && checkbox.checked == false) {
                 e.preventDefault();
