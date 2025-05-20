@@ -30,28 +30,33 @@
             0 0 0 1 0" />
         </filter>
     </svg>
-    <div class="header">
-        <h1>password generator</h1>
-        <div class="password-display">
-            <h3 id="passwordDisplay">
-                generated password
-            </h3>
-        </div>
-    </div>
-    <form id="buttons">
-        <button id="copy" type="button">
-            <img class="recolor" src="images/copy-document.png" alt="copy paste" width="45">
-        </button>
-        <button id="generate" type="button">
-            <img class="recolor" src="images/repost.png" alt="generate password" width="45">
-        </button>
-    </form>
         <form id="passwordgeneratorform" class="form">
-            <div class="length_group">
-                <label for="">password length</label> 
-                <div class="length_picker">
-                    <input type="range" class="slider" id="characterrange" min="8" max="50" value="15" tabindex="1">
-                    <input type="number" class="number" id="characternumber" min="8" max="50" value="15" tabindex="2">
+            <div class="header">
+                <h1>password generator</h1>
+            </div>
+
+            <div class="password-display">
+                <h3 id="passwordDisplay">
+                    generated password
+                </h3>
+            </div>
+
+            <div class="header_settings">
+                <div class="length_group">
+                    <label for="">password length</label> 
+                    <div class="length_picker">
+                        <input type="range" class="slider" id="characterrange" min="8" max="50" value="15" tabindex="1">
+                        <input type="number" class="number" id="characternumber" min="8" max="50" value="15" tabindex="2">
+                    </div>
+                </div>
+
+                <div class="copy_regenerate">
+                    <button id="copy" type="button">
+                        <img class="recolor" src="images/copy-document.png" alt="copy paste" width="45" tabindex="-1">
+                    </button>
+                    <button id="generate" type="button">
+                        <img class="recolor" src="images/repost.png" alt="generate password" width="45" tabindex="-1">
+                    </button>
                 </div>
             </div>
             
