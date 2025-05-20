@@ -312,14 +312,14 @@ footer {
 @media (max-width: 600px) {
     form {
         position: absolute;
-        top: 45%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
     
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
     
         padding: 1rem;
         width: 90vw;
@@ -334,7 +334,25 @@ footer {
 
     .header_settings {
         display: flex;
-        justify-content: space-between;
-        width: 400px;
+        justify-content: flex-start;
+        margin-top: -15px;
+    }
+
+    .copy_regenerate {
+        bottom: -50px;
+        position: fixed;
+        width: 100%;
+      }
+
+    .setting_checks input[type="radio"] {
+        flex-shrink: 0;
+    }
+
+    key {
+        visibility: hidden;
+    }
+
+    .key_hint_text {
+        visibility: hidden;
     }
 }
