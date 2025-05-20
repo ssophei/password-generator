@@ -344,6 +344,7 @@ footer {
         bottom: -60px;
         position: fixed;
         width: 100%;
+        justify-content: center;
       }
 
     .setting_checks input[type="radio"] {
@@ -351,11 +352,11 @@ footer {
     }
 
     key {
-        visibility: hidden;
+        display: none;
     }
 
     .key_hint_text {
-        visibility: hidden;
+        display: none;
     }
 
 }
