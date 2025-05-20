@@ -41,7 +41,16 @@ function generateDisplay() {
 
 function copier() {
     const copyText = document.getElementById("passwordDisplay").textContent;
-    navigator.clipboard.writeText(copyText);
+    const alert = document.querySelector(".copied_alert");
+
+    if (alert.classList.contains("visible")) return;
+    navigator.clipboard.writeText(copyText).then(() => {
+        alert.classList.add("visible");
+
+    setTimeout(() => {
+        alert.classList.remove("visible");
+      }, 1500);
+    });
 }
 
 copy.addEventListener('click', e => {
