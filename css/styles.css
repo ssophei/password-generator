@@ -198,7 +198,7 @@ input[type="radio"]:checked {
     padding: 4px;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .split_container {
         grid-template-columns: 1fr 1fr;
         grid-template-areas:
@@ -217,7 +217,7 @@ input[type="radio"]:checked {
       .checkbox_group {
         grid-area: checkbox;
       }
-}
+} */
 
 ::selection {
     background: var(--transparent-green);
@@ -228,4 +228,42 @@ input[type="radio"]:checked {
     user-select: all;
     -webkit-user-select: all;
     -webkit-user-drag: false;
+    width: 565px;
+    height: 40px;
+    background-color: var(--cream-color);
+    color: var(--transparent-green);
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+}
+
+key {
+    color: var(--cream-color);
+    background-color: var(--transparent-green);
+    padding: .2rem .3rem;
+    margin: 0rem;
+    border-radius: .2rem;
+    font-size: .7rem;
+    line-height: .7rem;
+    margin: 0 .5em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    font-size: .8rem;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.spacer {
+    padding: 2px;
 }
