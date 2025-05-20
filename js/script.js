@@ -1,5 +1,5 @@
-const characterrange = document.getElementById("characterrange")
-const characternumber = document.getElementById("characternumber")
+const characterRange = document.getElementById("characterrange")
+const characterNumber = document.getElementById("characternumber")
 const say = document.getElementById("say")
 const uppercase = document.getElementById("uppercase")
 const lowercase = document.getElementById("lowercase")
@@ -13,19 +13,31 @@ const readability = document.getElementById("readability")
 const checkboxes = document.querySelectorAll('input[type="checkbox"]')
 const radios = document.querySelectorAll('input[type="radio"]')
 
-characterrange.addEventListener("input", synchCharacterAmount)
-characternumber.addEventListener("input", synchCharacterAmount)
+characterRange.addEventListener('input', e => {
+    synchCharacterAmount(e);
+    generateDisplay();
+  });
+  
+characterNumber.addEventListener('input', e => {
+    synchCharacterAmount(e);
+    generateDisplay();
+  });
+
+function generateDisplay() {
+    const length = parseInt(characterRange.value);
+    const isSay = say.checked;
+    const isUppercase = uppercase.checked;
+    const isLowercase = lowercase.checked;
+    const isSymbols = symbols.checked;
+    const isNumbers = numbers.checked;
+    const isReadability = readability.checked;
+    const password = generatePassword(length, isReadability, isSay, isUppercase, isLowercase, isNumbers, isSymbols)
+    passwordDisplay.innerHTML = password
+}
 
 generate.addEventListener('click', e => {
     e.preventDefault()
-    const length = characternumber.value
-    const isSay = say.checked
-    const isUppercase = uppercase.checked
-    const isLowercase = lowercase.checked
-    const isSymbols = symbols.checked
-    const isNumbers = numbers.checked
-    const password = generatePassword(length, isSay, isUppercase, isLowercase, isNumbers, isSymbols)
-    passwordDisplay.innerHTML = password
+    generateDisplay()
 })
 
 checkboxes.forEach(checkbox => {
@@ -43,6 +55,7 @@ checkboxes.forEach(checkbox => {
             });
         }, 0);
     });
+    checkbox.addEventListener('input', generateDisplay);
 })
 
 radios.forEach(radio => {
@@ -84,6 +97,7 @@ radios.forEach(radio => {
             };
         };
     });
+    radio.addEventListener('input', generateDisplay)
 })
 
 function selectRadio(selectedRadio, group){
@@ -93,8 +107,10 @@ function selectRadio(selectedRadio, group){
     selectedRadio.dispatchEvent(new Event('change'), { bubbles: true });
 }
 
-function generatePassword(passwordLength, readability, uppercase, lowercase, numbers, symbols){
+function generatePassword(passwordLength, readability, say, uppercase, lowercase, numbers, symbols){
     const characterArray = [];
+    const ambiguousChars = ['l', '1', 'L', '0', 'O', 'o', 'I', 'i', '|'];
+    const removeAmbiguous = str => [...str].filter(c => !ambiguousChars.includes(c)).join('');
     const options = [
         {enabled: uppercase, value: secureRandomPassword.upper},
         {enabled: lowercase, value: secureRandomPassword.lower},
@@ -102,36 +118,36 @@ function generatePassword(passwordLength, readability, uppercase, lowercase, num
         {enabled: symbols, value: secureRandomPassword.symbols},
     ];
 
-    for (const {enabled, value} of options) {
-        if (enabled) {
-            characterArray.push(value);
-        }
-    }
-    
-    function randomInt(min, max) {
-        const minCeiled = Math.ceil(min);
-        const maxFloored = Math.floor(max);
-        return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
-    }
-
-    if (passwordLength < characterArray.length) {
-        const removeCount = characterArray.length - passwordLength
-        for (let i = 0; i < removeCount; i ++) {
-            const index = randomInt(0, characterArray.length)
-            characterArray.splice(index, 1)
-        }
-    }
+    const ambiguousOptions = [
+        {enabled: uppercase, value: removeAmbiguous(secureRandomPassword.upper)},
+        {enabled: lowercase, value: removeAmbiguous(secureRandomPassword.lower)},
+        {enabled: numbers, value: removeAmbiguous(secureRandomPassword.digits)},
+        {enabled: symbols, value: removeAmbiguous(secureRandomPassword.symbols)},
+    ];
 
     if (readability) {
-        return secureRandomPassword.randomPassword({
-            length: Number(passwordLength), 
-            characters: characterArray, 
-            predicate: x => !/[Ll1|0Oo]/.test(x)});
+        for (const {enabled, value} of ambiguousOptions) {
+            if (enabled) {
+                characterArray.push(value);
+                console.log(value)
+            }
+        }
     } else {
-        return secureRandomPassword.randomPassword({
-            length: Number(passwordLength), 
-            characters: characterArray});
+        for (const {enabled, value} of options) {
+            if (enabled) {
+                characterArray.push(value);
+            }
+        }
     }
+
+    while (characterArray.length > passwordLength) {
+        const index = randomInt(0, characterArray.length);
+        characterArray.splice(index, 1);
+    }
+
+    return secureRandomPassword.randomPassword({
+        length: Number(passwordLength), 
+        characters: characterArray});
 }
 
 function synchCharacterAmount(e) {
