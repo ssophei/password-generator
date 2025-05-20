@@ -36,17 +36,26 @@ function generateDisplay() {
 }
 
 generate.addEventListener('click', e => {
-    e.preventDefault()
-    generateDisplay()
+    e.preventDefault();
+    generateDisplay();
+})
+
+characterNumber.addEventListener('keypress', e => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        generateDisplay();
+    } 
 })
 
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener('keypress', e => {
         if (e.key === 'Enter' && checkbox.checked == false) {
             checkbox.checked = true;
+            generateDisplay();
         } 
         else if(e.key === 'Enter' && checkbox.checked == true) {
             checkbox.checked = false;
+            generateDisplay();
         }
 
         setTimeout(() => {
@@ -64,6 +73,7 @@ radios.forEach(radio => {
         if (e.key === 'Enter' | e.key === ' ') {
             e.preventDefault();
             selectRadio(radio, group);
+            generateDisplay();
         }
     });
     radio.addEventListener('click', () => {
