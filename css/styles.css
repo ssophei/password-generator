@@ -347,6 +347,7 @@ footer {
         position: fixed;
         width: 100%;
         justify-content: center;
+        margin-left: -10px;
       }
 
     .setting_checks input[type="radio"] {
@@ -368,9 +369,9 @@ footer {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 4px;
+    margin-top: 3px;
     color: var(--checkbox-border-color);
-    padding-top: 5px;
+    padding-top: 4px;
     padding-bottom: -2px;
     margin-bottom: 8px;
     font-family: inherit;
@@ -415,3 +416,12 @@ footer {
     opacity: 0;
     transition: opacity 0s;
 }
+
+/* .tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    font-family: "Roboto Mono", monospace;
+} */
