@@ -276,7 +276,9 @@ footer {
     position: fixed;
     width: 100%;
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
+    justify-content: center;
+    align-items: center;
 }
 
 .copied_alert {
@@ -292,12 +294,12 @@ footer {
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
-    }
+}
 
 .inner_text {
     display: inline-block;
     transform: translate(1px, -1px);
-    }
+}
 
 
 .copied_alert.visible {
@@ -308,16 +310,7 @@ footer {
 .spacer {
     padding: 2px;
 }
-
-.github-link {
-    display: inline-flex;
-    align-items: center;
-    color: var(--checkbox-border-color);
-    padding-top: 5px;
-    padding-bottom: -2px;
-  }
   
-
 @media (max-width: 500px) {
     form {
         position: absolute;
@@ -368,4 +361,58 @@ footer {
         display: none;
     }
 
+}
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 4px;
+    color: var(--checkbox-border-color);
+    padding-top: 5px;
+    padding-bottom: -2px;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-family: inherit;
+    width: fit-content;
+}
+
+.github-icon {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.github-link:hover {
+    color: var(--cream-color);
+    transition: color 0.4s linear;
+}
+
+.github-link .hover {
+    position: relative;
+    filter: url(#recolorFFFCE2);
+    opacity: 0;
+    transition: opacity 0.4s linear;
+    pointer-events: none;
+    will-change: opacity;
+}
+  
+.github-link .default {
+    position: relative;
+    filter: url(#recolor4A5846);
+    opacity: 1;
+    transition: opacity 0.4s linear;
+    pointer-events: none;
+    will-change: opacity;
+}
+  
+.github-link:hover .hover {
+    opacity: 1;
+    transition: opacity 0.4s linear;
+}
+  
+.github-link:hover .default {
+    opacity: 0;
+    transition: opacity 0s;
 }

@@ -18,9 +18,15 @@
 
     <style>
         img.recolor {
-          filter: url(#recolorFFFCE2);
-          user-select: none;
-          -webkit-user-drag: none;
+            filter: url(#recolorFFFCE2);
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        img.recolor-green {
+            filter: url(#recolor4A5846);
+            user-select: none;
+            -webkit-user-drag: none;
         }
       </style>
     </head>
@@ -31,6 +37,15 @@
             0 0 0 0 1
             0 0 0 0 0.988
             0 0 0 0 0.886
+            0 0 0 1 0" />
+        </filter>
+    </svg>
+    <svg width="0" height="0" style="position: absolute;">
+        <filter id="recolor4A5846" color-interpolation-filters="sRGB">
+          <feColorMatrix type="matrix" values="
+            0 0 0 0 0.290
+            0 0 0 0 0.345
+            0 0 0 0 0.274
             0 0 0 1 0" />
         </filter>
     </svg>
@@ -116,6 +131,12 @@
         <key>c</key>
         <span class="key_hint_text"> - copy password</span>
     </div>
-    <a class="github-link" href="https://github.com/ssophei/ssophei.github.io" target="_blank">github</a>
+    <a class="github-link" href="https://github.com/ssophei/ssophei.github.io" target="_blank">
+        <span class="github-icon">
+            <img class="icon default" src="images/github.png" alt="github" width="14">
+            <img class="icon hover" src="images/github.png" alt="github" width="14">
+        </span>
+        github
+    </a>
 </footer>
 </html>
