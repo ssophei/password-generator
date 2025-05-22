@@ -372,7 +372,6 @@ footer {
     color: var(--checkbox-border-color);
     padding-top: 5px;
     padding-bottom: -2px;
-    text-decoration: none;
     margin-bottom: 8px;
     font-family: inherit;
     width: fit-content;
@@ -386,7 +385,7 @@ footer {
 
 .github-link:hover {
     color: var(--cream-color);
-    transition: color 0.4s linear;
+    transition: color 0.4s ease;
 }
 
 .github-link .hover {
